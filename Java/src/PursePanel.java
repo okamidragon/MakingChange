@@ -7,27 +7,22 @@ public class PursePanel extends JPanel {
 
     public void setPurse(Purse purse) {
         this.purse = purse;
-        repaint(); // Repaint when purse is updated
+        repaint();  // Request to repaint the panel when the purse is updated
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        int x = 10, y = 20;
+        // Draw the content of the purse
+        int y = 20;  // Starting y position for drawing
+        g.setFont(new Font("Arial", Font.PLAIN, 14));  // Set font for better readability
+
         for (Map.Entry<Denomination, Integer> entry : purse.getCash().entrySet()) {
             Denomination denom = entry.getKey();
             int count = entry.getValue();
-            ImageIcon icon = new ImageIcon( denom.img());
-            System.out.print("attempting to load: " + denom.img());
-
-            for (int i = 0; i < count; i++) {
-                g.drawImage(icon.getImage(), x, y, this);
-                x += icon.getIconWidth() + 5;
-                if (x > getWidth() - 100) {
-                    x = 10;
-                    y += icon.getIconHeight() + 5;
-                }
-            }
+            String text = String.format("%d %s",  count, denom.name());
+            g.drawString(text, 20, y);
+            y += 20;  // Move down for the next line
         }
     }
 }
