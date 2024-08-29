@@ -5,24 +5,28 @@ public class Purse {
     private final Map<Denomination, Integer> cash = new HashMap<>();
 
     public void add(Denomination type, int num) {
-        cash.merge(type, num, Integer::sum);
+        cash.put(type, cash.getOrDefault(type, 0) + num);
     }
 
     public double remove(Denomination type, int num) {
-        int current = cash.getOrDefault(type, 0);
-        int toRemove = Math.min(num, current);
-        cash.put(type, current - toRemove);
-        return type.amt() * toRemove;
+        int currentAmount = cash.getOrDefault(type, 0);
+        int amountToRemove = Math.min(num, currentAmount);
+        cash.put(type, currentAmount - amountToRemove);
+        return amountToRemove * type.amt();
     }
 
     public double getValue() {
         return cash.entrySet().stream()
-                .mapToDouble(e -> e.getKey().amt() * e.getValue())
+                .mapToDouble(entry -> entry.getKey().amt() * entry.getValue())
                 .sum();
     }
 
+    public Map<Denomination, Integer> getCash() {
+        return cash;
+    }
+
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("Purse contains:\n");
         for (Map.Entry<Denomination, Integer> entry : cash.entrySet()) {
             sb.append(entry.getKey().name())
                     .append(": ")
@@ -30,10 +34,5 @@ public class Purse {
                     .append("\n");
         }
         return sb.toString();
-    }
-
-    // Getter for cash
-    public Map<Denomination, Integer> getCash() {
-        return cash;
     }
 }
