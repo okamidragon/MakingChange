@@ -3,22 +3,26 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Map;
 
+// Main class for the purse panel
 public class PursePanel extends JPanel {
     private Purse purse = new Purse();
     private static final int IMAGE_WIDTH = 150;
     private static final int IMAGE_HEIGHT = 100;
 
+    // Sets the layout of the panel
     public PursePanel() {
-        setLayout(new FlowLayout(FlowLayout.LEFT)); // Use FlowLayout to display images in rows
+        setLayout(new FlowLayout(FlowLayout.LEFT));
     }
 
+    // Gets the information about the purse for the panel
     public void setPurse(Purse purse) {
         this.purse = purse;
         updateImages();
     }
 
+    // Clear the panel before adding new images
     private void updateImages() {
-        removeAll(); // Clear the panel before adding new images
+        removeAll();
 
         for (Map.Entry<Denomination, Integer> entry : purse.getCash().entrySet()) {
             Denomination denoms = entry.getKey();
@@ -43,6 +47,7 @@ public class PursePanel extends JPanel {
         repaint();
     }
 
+    // Makes the images fit on the screen
     private Image resizeImage(Image originalImage, int width, int height) {
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = bufferedImage.createGraphics();
@@ -51,6 +56,7 @@ public class PursePanel extends JPanel {
         return bufferedImage;
     }
 
+    // Sets the dimensions of the panel
     public Dimension getPreferredSize() {
         return new Dimension(800, 600); // Adjust as needed to fit the images
     }
