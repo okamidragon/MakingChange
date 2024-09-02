@@ -1,5 +1,6 @@
 import javax.swing.*;
 
+// The main function of the program
 public class MakingChange {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
