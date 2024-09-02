@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+// Main class for the Register
 public class Register {
+
+    // Fills in the Denomination record
     private static final List<Denomination> denominations = List.of(
             new Denomination("Hundred Note", 100.0, "bill", "Images/hundred.jpg"),
             new Denomination("Fifty Dollar Note", 50.0, "bill", "Images/fifty.jpg"),
@@ -15,6 +18,7 @@ public class Register {
             new Denomination("Penny", 0.01, "coin", "Images/penny.jpg")
     );
 
+    // Counts the money in the purse
     public Purse makeChange(double amt) {
         Purse purse = new Purse();
         for (Denomination denoms : denominations) {
@@ -22,7 +26,7 @@ public class Register {
                 int count = (int) (amt / denoms.amt());
                 purse.add(denoms, count);
                 amt -= denoms.amt() * count;
-                if (amt < 0.001) break;
+                if (amt < 0.0001) break;
             }
         }
         return purse;
