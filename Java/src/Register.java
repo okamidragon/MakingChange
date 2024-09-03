@@ -21,7 +21,7 @@ public class Register {
             new Denomination("Penny", 0.01, "coin", "Images/penny.jpg")
     );
 
-    // Counts the money in the purse
+    // Calculates the money in the purse
     public Purse makeChange(double amt) {
         Purse purse = new Purse();
         for (Denomination denoms : denominations) {
