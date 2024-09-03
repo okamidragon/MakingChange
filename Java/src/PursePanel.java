@@ -23,7 +23,7 @@ public class PursePanel extends JPanel {
         updateImages();
     }
 
-    // Clear the panel before adding new images
+    // Clear the panel before adding new images, also resizes images
     private void updateImages() {
         removeAll();
 
