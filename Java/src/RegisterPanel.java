@@ -1,3 +1,6 @@
+/* Maddock Davis
+Lab 1 - Making Change
+Takes an amount of money from the user and shows how man coins or bills makes it. */
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
