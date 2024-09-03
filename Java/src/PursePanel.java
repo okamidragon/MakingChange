@@ -1,3 +1,6 @@
+/* Maddock Davis
+Lab 1 - Making Change
+Takes an amount of money from the user and shows how man coins or bills makes it. */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -58,6 +61,6 @@ public class PursePanel extends JPanel {
 
     // Sets the dimensions of the panel
     public Dimension getPreferredSize() {
-        return new Dimension(800, 600); // Adjust as needed to fit the images
+        return new Dimension(600, 600); // Adjust as needed to fit the images
     }
 }
